@@ -15,10 +15,11 @@ public class ObjectStreamExercise {
         list.add(new Employee(5,"Swetha",90000,new City("bang",1122)));
         list.add(new Employee(6,"Swetha",90000,new City("bang",1122)));
 
-        groupByEmployee(list);
-        sortEmployee(list);
+      // groupByEmployee(list);
+        //sortEmployee(list);
         FInterface functionalInterface = (a,b)->a*b;
          //System.out.println(functionalInterface.multiply(6,2));
+
     }
 
     public static void sortEmployee(List<Employee> list)

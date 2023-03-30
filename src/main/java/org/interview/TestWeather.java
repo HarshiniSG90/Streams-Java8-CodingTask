@@ -18,9 +18,9 @@ public class TestWeather {
         weatherList.add(new Weather("Snow",0.0));
         weatherList.add(new Weather("Freezing",-15.0));
 
-       //weatherList.stream().map(Weather::getTemperature).sorted().forEach(System.out::println);
+      // weatherList.stream().map(Weather::getTemperature).sorted().forEach(System.out::println);
        // weatherList.stream().sorted(Weather::getTemperature).forEach(System.out::println);
-        weatherList.stream().sorted((p1,p2)->p1.getTemperature().compareTo(p2.getTemperature())).forEach(System.out::println);
+        weatherList.stream().sorted((p1,p2)->(int)(p1.getTemperature()-p2.getTemperature())).forEach(System.out::println);
       //weatherList.stream().map(Weather::getTemperature).sorted((p1,p2)->p1.compareTo(p2)).forEach(System.out::println);
     }
 }

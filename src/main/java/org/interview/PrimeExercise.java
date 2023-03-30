@@ -15,6 +15,9 @@ class PrimeExercise {
 
         System.out.println(list);
 
+        Stream.iterate(1,i->i+1).filter(i->isPrime(i)).map(Math::sqrt).limit(10).collect(Collectors.toList());
+        int n = 7;
+
 
     }
 

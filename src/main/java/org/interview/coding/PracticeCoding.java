@@ -10,15 +10,24 @@ public class PracticeCoding {
 
     public static void main(String args[])
     {
-        String str = "Hai Harshini how is llife";
+        String str = "Hai Harshini how is life how";
         int[] numbers = {5,9,11,2,8,21,29,1};
-        removeDuplicate(str);
+      //  removeDuplicate(str);
         findFirstNonRepeatableCharacterFromString(str);
-        findTheSecondHigestNumber(numbers);
+      /*  findTheSecondHigestNumber(numbers);
         findTheLongestString();
         findElementsStartingWith1(numbers);
         stringJoinExample();
-        skipAndLimitExample();
+        skipAndLimitExample();*/
+      //  reverseMapBasedOnWordOccurance();
+    }
+
+    private static void reverseMapBasedOnWordOccurance() {
+        String str = "hello harshini how are you hello kishore hello are";
+
+        Map<String,Long> map = Arrays.stream(str.split(" ")).collect(Collectors.groupingBy(x->x,Collectors.counting()));
+       map.entrySet().stream().sorted((x,y)->(int)(y.getValue()-x.getValue())).forEach(x->System.out.println(x.getKey()+"=="+x.getValue()));
+
     }
 
     private static void skipAndLimitExample() {
@@ -60,16 +69,16 @@ public class PracticeCoding {
 
         Integer secondLowestNumb =  Arrays.stream(numbers).boxed()
                 .sorted()
-                .skip(1).findFirst().get();
+                .skip(1).findFirst().orElse(0);
         System.out.println(secondLowestNumb);
     }
 
     private static void findFirstNonRepeatableCharacterFromString(String str) {
-        String firstNonEle = Arrays.stream(str.split("")).filter(x->!(x.contains(" "))).
+        String firstNonEle = Arrays.stream(str.split("")).filter(x->!(x.contains(" "))).peek(System.out::print).
                 collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new,Collectors.counting()))
-                .entrySet().stream().filter(x->x.getValue()==1).findFirst().get().getKey();
-
-        System.out.println(firstNonEle);
+                .entrySet().stream().filter(x->x.getValue()==1).findFirst().orElse(null).getKey();
+      //if you need to change to non repeatable word just include space in split method
+        System.out.println("\n"+firstNonEle);
 
         String firstRepeatableEle = Arrays.stream(str.split("")).filter(x->!(x.contains(" "))).
                 collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new,Collectors.counting()))
